@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_explore"
+        android:icon="@drawable/ic_explore_black"
+        android:title="Explore" />
+
+    <item android:id="@+id/menu_search"
+        android:icon="@drawable/ic_search_black"
+        android:title="Search" />
+
+    <item android:id="@+id/menu_favorite"
+        android:icon="@drawable/ic_favorite_black"
+        android:title="Favorite" />
+
+</menu>
