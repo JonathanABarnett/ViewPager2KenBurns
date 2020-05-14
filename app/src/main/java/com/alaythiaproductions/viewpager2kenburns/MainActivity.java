@@ -15,12 +15,14 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ViewPager2 locationsViewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewPager2 locationsViewPager = findViewById(R.id.locations_viewpager);
+        locationsViewPager = findViewById(R.id.locations_viewpager);
 
         List<TravelLocation> travelLocations = new ArrayList<>();
 
@@ -29,14 +31,19 @@ public class MainActivity extends AppCompatActivity {
         TravelLocation travelLocation3  = new TravelLocation("Mt. Fuji", "Honshu, Japan", "https://d36tnp772eyphs.cloudfront.net/blogs/1/2011/05/japan-1200x729.jpg", 2.3);
         TravelLocation travelLocation4  = new TravelLocation("Denali Nat. Park", "Denali, AK", "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Bear_Digging_and_Denali_%2811330360484%29.jpg/800px-Bear_Digging_and_Denali_%2811330360484%29.jpg", 4.6);
         TravelLocation travelLocation5  = new TravelLocation("Caribbean Beach", "Caribbean Islands", "https://www.sailingeurope.com/blog/wp-content/uploads/2019/01/Barbados.jpg", 3.3);
+        TravelLocation travelLocation6  = new TravelLocation("St. Louis Arch", "St. Louis, MO", "https://thumbs-prod.si-cdn.com/qyknExPUw3jj0hDfGODpC60gOys=/800x600/filters:no_upscale()/https://public-media.si-cdn.com/filer/ee/29/ee29f55b-813b-4043-a25e-cf7eb8d158fb/gateway-arch.jpg", 3.6);
+        TravelLocation travelLocation7  = new TravelLocation("Grand Canyon Nat. Park", "Grand Canyon, AZ", "https://cdn.getyourguide.com/img/location_img-489-2998343155-88.jpg", 3.7);
+
 
         travelLocations.add(travelLocation1);
         travelLocations.add(travelLocation2);
         travelLocations.add(travelLocation3);
         travelLocations.add(travelLocation4);
         travelLocations.add(travelLocation5);
+        travelLocations.add(travelLocation6);
+        travelLocations.add(travelLocation7);
 
-        locationsViewPager.setAdapter(new TravelLocationAdapter(travelLocations));
+        locationsViewPager.setAdapter(new TravelLocationAdapter(travelLocations, locationsViewPager));
 
         locationsViewPager.setClipToPadding(false);
         locationsViewPager.setClipChildren(false);
@@ -49,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void transformPage(@NonNull View page, float position) {
                 float r = 1 - Math.abs(position);
-                page.setScaleY(0.95f + r * 0.05f);
+                page.setScaleY(0.85f + r * 0.2f);
             }
         });
 
         locationsViewPager.setPageTransformer(compositePageTransformer);
     }
+
 }

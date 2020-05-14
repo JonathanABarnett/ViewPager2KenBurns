@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.flaviofaria.kenburnsview.KenBurnsView;
 import com.squareup.picasso.Picasso;
@@ -15,11 +16,17 @@ import java.util.List;
 
 public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAdapter.TravelLocationViewHolder> {
 
-    public TravelLocationAdapter(List<TravelLocation> travelLocations) {
-        this.travelLocations = travelLocations;
-    }
-
     private List<TravelLocation> travelLocations;
+    private ViewPager2 viewPager2;
+
+//    public TravelLocationAdapter(List<TravelLocation> travelLocations) {
+//        this.travelLocations = travelLocations;
+//    }
+
+    public TravelLocationAdapter(List<TravelLocation> travelLocations, ViewPager2 viewPager2) {
+        this.travelLocations = travelLocations;
+        this.viewPager2 = viewPager2;
+    }
 
     public List<TravelLocation> getTravelLocations() {
         return travelLocations;
@@ -39,6 +46,9 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
     @Override
     public void onBindViewHolder(@NonNull TravelLocationViewHolder holder, int position) {
         holder.setLocationData(travelLocations.get(position));
+        if (position == travelLocations.size() - 2) {
+            viewPager2.post(runnable);
+        }
     }
 
     @Override
@@ -67,4 +77,12 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
             starRatingTextView.setText(String.valueOf(travelLocation.getStarRating()));
         }
     }
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            travelLocations.addAll(travelLocations);
+            notifyDataSetChanged();
+        }
+    };
 }
