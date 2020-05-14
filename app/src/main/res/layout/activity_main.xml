@@ -7,8 +7,79 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile_image_cardview"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        
+        <ImageView
+            android:id="@+id/profile_image_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/blank_profile_tie" />
+        
+    </androidx.cardview.widget.CardView>
+    
+    <TextView
+        android:id="@+id/welcome_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Hello, John Doe"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/profile_image_cardview"
+        app:layout_constraintEnd_toStartOf="@id/profile_image_cardview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/profile_image_cardview" />
+
+    <TextView
+        android:id="@+id/where_are_we_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Where are we"
+        android:textColor="#212121"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/profile_image_cardview" />
+
+    <TextView
+        android:id="@+id/going_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="going today?"
+        android:textColor="#757575"
+        android:textSize="40dp"
+        app:layout_constraintTop_toBottomOf="@id/where_are_we_textview" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/locations_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="60dp"
+        android:paddingEnd="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@id/nav_bottombar"
+        app:layout_constraintTop_toBottomOf="@id/going_textview" />
+
 <me.ibrahimsn.lib.SmoothBottomBar
-    android:id="@+id/bottom_bar"
+    android:id="@+id/nav_bottombar"
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:layout_marginStart="10dp"
